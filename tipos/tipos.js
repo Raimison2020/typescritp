@@ -54,5 +54,20 @@ var Colors;
 })(Colors || (Colors = {}));
 let colors = Colors.Green;
 console.log(colors);
+// 20. O Tipo “Any”
+let carro = 'BMW';
+console.log(carro);
+console.log(typeof carro);
+carro = { marca: 'BMW', ano: 2013 };
+console.log(carro);
+console.log(typeof carro);
+let obj = { nome: 'Estevan' };
+// console.log(obj.idade.toFixed(2))
+// unknown
+let valorDesconhecido = 'Eu sou um string';
+// console.log(valorDesconhecido.toUpperCase())
+if (typeof valorDesconhecido === 'string') {
+    console.log(valorDesconhecido.toUpperCase());
+}
 export {};
 //# sourceMappingURL=tipos.js.map
