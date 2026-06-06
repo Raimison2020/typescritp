@@ -120,3 +120,100 @@ let calculo: (x: number, y: number) => number
 
 calculo = multiplicar
 console.log(calculo(5, 6))
+
+// 24. Objetos e Tipos
+let usuario: { nome: string, idade: number } = {
+	nome: 'Rafaela',
+	idade: 28
+}
+console.log(usuario)
+
+usuario = {
+	idade: 39,
+	nome: 'Raimison'
+}
+console.log(usuario)
+
+// 25 e 26 Desafio Tipos Objetos/Resposta // 27. Definindo Tipos Personalizados (Alias)
+/*## *Criar um objeto funcionário com:*
+
+- Array de strings com os nomes dos supervisores
+				- Função de bater ponto que recebe a hora (número) e retorna uma string
+						-> Ponto normal (<= 8)
+						-> Fora do horário (> 8)
+*/
+type Funcionario = {
+	supervisores: string[],
+	baterPonto: (horas: number) => string
+}
+
+let funcionario: Funcionario = {
+	supervisores: ['Rafaela', 'Raimison'],
+	baterPonto(horario: number): string {
+		return horario <= 8 ? 'Ponto Normal' : 'Fora do Horário'
+	},
+}
+
+let funcionario2: Funcionario = {
+	supervisores: ['Raimison', 'Lima'],
+	baterPonto(horas: number): string {
+		return horas <= 8 ? 'Ponto ok' : 'Ponto incorreto'
+	},
+}
+
+console.log(funcionario.supervisores)
+console.log(funcionario.baterPonto(8))
+console.log(funcionario.baterPonto(18))
+
+console.log(funcionario2.supervisores)
+console.log(funcionario2.baterPonto(8))
+console.log(funcionario2.baterPonto(18))
+
+// 28. Múltiplos Tipos com Union
+// Variável com múltiplos tipos
+let valor: string | number
+
+let nota: number | string = 10
+console.log(`Minha nota é: ${nota}`)
+nota = '9'
+console.log(`Minha nota é: ${nota}`)
+
+// Funções com Union Types
+function imprimirId(id: number | string) {
+	console.log(`ID: ${id}`)
+}
+
+imprimirId(123)
+imprimirId('ABC123')
+
+// Arrays com Union Types
+let lista: (string | number)[] = [1, 'dois', 3, 'quatro']
+console.log(lista)
+
+// 29. Checando Tipos em Runtime
+let valor2 = 30
+if (typeof valor2 === 'number') {
+	console.log('É um number')
+} else {
+	console.log(typeof valor2)
+}
+
+// 30. O Tipo “Never”
+function falha(msg: string): never {
+	throw new Error(msg)
+}
+
+const produto = {
+	nome: 'Sabão',
+	preco: 1,
+	validarProduto() {
+		if (!this.nome || this.nome.trim().length == 0) {
+			falha('Precisa ter um nome')
+		}
+		if (this.preco <= 0) {
+			falha('Preço inválido')
+		}
+	}
+}
+
+produto.validarProduto()

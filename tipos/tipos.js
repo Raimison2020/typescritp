@@ -94,5 +94,75 @@ digaOi();
 let calculo;
 calculo = multiplicar;
 console.log(calculo(5, 6));
+// 24. Objetos e Tipos
+let usuario = {
+    nome: 'Rafaela',
+    idade: 28
+};
+console.log(usuario);
+usuario = {
+    idade: 39,
+    nome: 'Raimison'
+};
+console.log(usuario);
+let funcionario = {
+    supervisores: ['Rafaela', 'Raimison'],
+    baterPonto(horario) {
+        return horario <= 8 ? 'Ponto Normal' : 'Fora do Horário';
+    },
+};
+let funcionario2 = {
+    supervisores: ['Raimison', 'Lima'],
+    baterPonto(horas) {
+        return horas <= 8 ? 'Ponto ok' : 'Ponto incorreto';
+    },
+};
+console.log(funcionario.supervisores);
+console.log(funcionario.baterPonto(8));
+console.log(funcionario.baterPonto(18));
+console.log(funcionario2.supervisores);
+console.log(funcionario2.baterPonto(8));
+console.log(funcionario2.baterPonto(18));
+// 28. Múltiplos Tipos com Union
+// Variável com múltiplos tipos
+let valor;
+let nota = 10;
+console.log(`Minha nota é: ${nota}`);
+nota = '9';
+console.log(`Minha nota é: ${nota}`);
+// Funções com Union Types
+function imprimirId(id) {
+    console.log(`ID: ${id}`);
+}
+imprimirId(123);
+imprimirId('ABC123');
+// Arrays com Union Types
+let lista = [1, 'dois', 3, 'quatro'];
+console.log(lista);
+// 29. Checando Tipos em Runtime
+let valor2 = 30;
+if (typeof valor2 === 'number') {
+    console.log('É um number');
+}
+else {
+    console.log(typeof valor2);
+}
+// 30. O Tipo “Never”
+function falha(msg) {
+    throw new Error(msg);
+}
+const produto = {
+    nome: 'Sabão',
+    preco: 1,
+    validarProduto() {
+        if (!this.nome || this.nome.trim().length == 0) {
+            falha('Precisa ter um nome');
+        }
+        if (this.preco <= 0) {
+            falha('Preço inválido');
+        }
+    }
+};
+produto.validarProduto();
 export {};
 //# sourceMappingURL=tipos.js.map
