@@ -87,4 +87,36 @@ if (typeof valorDesconhecido === 'string') {
 	console.log(valorDesconhecido.toUpperCase())
 }
 
+// 22. Usando Tipos em Funções (Parâmetros e Retorno)
+function multiplicar(numA: number, numB: number): number {
+	return numA * numB
+}
 
+console.log(multiplicar(4.7, 9))
+
+// Tipos no retorno
+function retornaNome(): string {
+	return nome
+}
+
+console.log(retornaNome())
+
+// Funções que não retornam nada
+function digaOi(): void {
+	console.log('Oi')
+}
+digaOi()
+
+// // 23. Funções Como Tipos
+// let calculo
+// calculo = digaOi
+// calculo()
+
+// calculo = multiplicar
+// console.log(calculo(5, 6))
+
+// Definindo tipo função
+let calculo: (x: number, y: number) => number
+
+calculo = multiplicar
+console.log(calculo(5, 6))
