@@ -164,5 +164,39 @@ const produto = {
     }
 };
 produto.validarProduto();
+// 31. Valores Opcionais com Tipo Null
+// Usando Union Type para atribuir dois tipos a uma propriedade
+let alturaOpcional = 1.75;
+alturaOpcional = null;
+const contato1 = {
+    nome: 'Fulano',
+    tel1: '9993939',
+    tel2: null
+};
+console.log(contato1);
+// Atribuindo Null
+let podeSerNull = null;
+podeSerNull = 12;
+console.log(podeSerNull);
+podeSerNull = 'abc';
+console.log(podeSerNull);
+let podeSerNull2 = null;
+podeSerNull2 = null;
+console.log(podeSerNull2);
+// podeSerNull2 = 'abc' // erro
+console.log(podeSerNull2);
+let contaBancaria = {
+    saldo: 3456,
+    depositar(valor) {
+        this.saldo += valor;
+    }
+};
+let correntista = {
+    nome: 'Rafaela',
+    contataBancaria: contaBancaria,
+    contatos: ['993939', '323233']
+};
+correntista.contataBancaria.depositar(5000);
+console.log(correntista);
 export {};
 //# sourceMappingURL=tipos.js.map

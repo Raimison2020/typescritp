@@ -217,3 +217,83 @@ const produto = {
 }
 
 produto.validarProduto()
+
+// 31. Valores Opcionais com Tipo Null
+// Usando Union Type para atribuir dois tipos a uma propriedade
+let alturaOpcional: null | number = 1.75
+alturaOpcional = null
+
+type Contado = {
+	nome: string,
+	tel1: string,
+	tel2: string | null
+}
+
+const contato1: Contado = {
+	nome: 'Fulano',
+	tel1: '9993939',
+	tel2: null
+}
+
+console.log(contato1)
+
+// Atribuindo Null
+let podeSerNull = null
+podeSerNull = 12
+console.log(podeSerNull)
+
+podeSerNull = 'abc'
+console.log(podeSerNull)
+
+let podeSerNull2: null = null
+podeSerNull2 = null
+console.log(podeSerNull2)
+
+// podeSerNull2 = 'abc' // erro
+console.log(podeSerNull2)
+
+// 32/33. Desafio: Transformar Código JS em TS
+/** Código JS
+ * let contaBancaria = {
+	saldo: 3456,
+	depositar(valor) {
+		this.saldo += valor
+	}
+}
+
+let correntista = {
+	nome: 'Ana Silva',
+	contaBancaria: contaBancaria,
+	contatos: ['34567890', '98765432']
+}
+
+correntista.contaBancaria.depositar(3000)
+console.log(correntista)
+ */
+
+type ContaBancaria = {
+	saldo: number,
+	depositar: (valor: number) => void
+}
+
+type Correntista = {
+	nome: string,
+	contataBancaria: ContaBancaria
+	contatos: string[]
+}
+
+let contaBancaria: ContaBancaria = {
+	saldo: 3456,
+	depositar(valor: number) {
+		this.saldo += valor
+	}
+}
+
+let correntista: Correntista = {
+	nome: 'Rafaela',
+	contataBancaria: contaBancaria,
+	contatos: ['993939', '323233']
+}
+
+correntista.contataBancaria.depositar(5000)
+console.log(correntista)
