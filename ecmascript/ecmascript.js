@@ -52,12 +52,72 @@ saudacao();
 const falarCom = (pessoa) => console.log("Olá " + pessoa);
 falarCom("Rafaela");
 // this
-function normalComThis() {
-    console.log(this);
+// function normalComThis() {
+//   console.log(this);
+// }
+// normalComThis();
+// const normalComThisEscpecial = normalComThis.bind({ nome: "Rafa Daina" });
+// normalComThisEscpecial();
+// const arrowComThis = () => console.log(this);
+// arrowComThis();
+// let nome = "Guerreiro"; // variável global solta
+// class Personagem {
+//   nome: string = "Arqueiro";
+//   vida: number = 100;
+//   atacar() {
+//     console.log(nome + " atacou!"); // Vai usar a variável global
+//   }
+// }
+// const p = new Personagem();
+// p.atacar(); // Saída: 'Guerreiro atacou!' (Mas o personagem era o Arqueiro!)
+// Usando o this a forma correta do código acima:
+// class Personagem {
+//   nome: string = "Arqueiro";
+//   vida: number = 100;
+//   atacar() {
+//     // CORRETO: 'this.nome' pega o nome DESTE personagem específico
+//     console.log(this.nome + " disparou uma flexa!");
+//     this.vida -= 10; // CORRETO: Altera a vida DESTE personagem específico
+//   }
+// }
+// const heroi1 = new Personagem();
+// heroi1.nome = "Mago";
+// const heroi2 = new Personagem();
+// heroi2.nome = "Ladino";
+// heroi1.atacar();
+// heroi2.atacar();
+// This em Arrow Function
+// class Personagem {
+//   nome: string = "Arqueiro";
+//   vida: number = 50;
+//   curarComFuncaoTradicional() {
+//     console.log(this.nome + " tomou uma poção...");
+//     setTimeout(function () {
+//       // 🚨 ERRO! O JavaScript perdeu o 'this'!
+//       // Quem chama essa função interna após 2 segundos é o próprio navegador/sistema,
+//       // não o nosso personagem. Então 'this.vida' vira undefined.
+//       this.vida += 20;
+//       console.log("Cura aplicada. Vida atual: " + this.vida);
+//     }, 2000);
+//   }
+// }
+// const heroi1 = new Personagem();
+// heroi1.curarComFuncaoTradicional();
+// Solução a Arrow funcion
+class Personagem {
+    nome = "Arqueiro";
+    vida = 50;
+    curarComArrow() {
+        console.log(this.nome + " tomou uma poção...");
+        // 🎯 Usando Arrow Function (() => {})
+        setTimeout(() => {
+            // ✅ FUNCIONA PERFEITAMENTE!
+            // O 'this' aqui dentro continua sendo o "Arqueiro".
+            this.vida += 20;
+            console.log("Cura aplicada. Vida atual: " + this.vida);
+        }, 2000);
+    }
 }
-normalComThis();
-const normalComThisEscpecial = normalComThis.bind({ nome: "Rafa Daina" });
-normalComThisEscpecial();
-const arrowComThis = () => console.log(this);
-arrowComThis();
+const heroi1 = new Personagem();
+heroi1.curarComArrow();
 export {};
