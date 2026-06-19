@@ -120,4 +120,25 @@ class Personagem {
 }
 const heroi1 = new Personagem();
 heroi1.curarComArrow();
+// Parâmetro Padrão
+function contagemRegressiva(inicio = 5, fim = inicio - 5) {
+    console.log(inicio);
+    while (inicio > fim) {
+        inicio--;
+        console.log(inicio);
+    }
+    console.log("Fim!");
+}
+contagemRegressiva(3);
+contagemRegressiva();
 export {};
+// function contagemRegressiva(inicio: number = 3): void {
+//   console.log(inicio);
+//   while (inicio > 0) {
+//     inicio--;
+//     console.log(inicio);
+//   }
+//   console.log("Fim!");
+// }
+// contagemRegressiva();
+// contagemRegressiva(5);
