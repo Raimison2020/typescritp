@@ -104,34 +104,36 @@ falarCom("Rafaela");
 // const heroi1 = new Personagem();
 // heroi1.curarComFuncaoTradicional();
 // Solução a Arrow funcion
-class Personagem {
-    nome = "Arqueiro";
-    vida = 50;
-    curarComArrow() {
-        console.log(this.nome + " tomou uma poção...");
-        // 🎯 Usando Arrow Function (() => {})
-        setTimeout(() => {
-            // ✅ FUNCIONA PERFEITAMENTE!
-            // O 'this' aqui dentro continua sendo o "Arqueiro".
-            this.vida += 20;
-            console.log("Cura aplicada. Vida atual: " + this.vida);
-        }, 2000);
-    }
-}
-const heroi1 = new Personagem();
-heroi1.curarComArrow();
-// Parâmetro Padrão
-function contagemRegressiva(inicio = 5, fim = inicio - 5) {
-    console.log(inicio);
-    while (inicio > fim) {
-        inicio--;
-        console.log(inicio);
-    }
-    console.log("Fim!");
-}
-contagemRegressiva(3);
-contagemRegressiva();
-export {};
+// class Personagem {
+//   nome: string = "Arqueiro";
+//   vida: number = 50;
+//   curarComArrow() {
+//     console.log(this.nome + " tomou uma poção...");
+//     // 🎯 Usando Arrow Function (() => {})
+//     setTimeout(() => {
+//       // ✅ FUNCIONA PERFEITAMENTE!
+//       // O 'this' aqui dentro continua sendo o "Arqueiro".
+//       this.vida += 20;
+//       console.log("Cura aplicada. Vida atual: " + this.vida);
+//     }, 2000);
+//   }
+// }
+// const heroi1 = new Personagem();
+// heroi1.curarComArrow();
+// // Parâmetro Padrão
+// function contagemRegressiva(
+//   inicio: number = 5,
+//   fim: number = inicio - 5,
+// ): void {
+//   console.log(inicio);
+//   while (inicio > fim) {
+//     inicio--;
+//     console.log(inicio);
+//   }
+//   console.log("Fim!");
+// }
+// contagemRegressiva(3);
+// contagemRegressiva();
 // function contagemRegressiva(inicio: number = 3): void {
 //   console.log(inicio);
 //   while (inicio > 0) {
@@ -142,3 +144,10 @@ export {};
 // }
 // contagemRegressiva();
 // contagemRegressiva(5);
+// Rest & Spread
+const numbers = [1, 10, 99, -5];
+console.log(Math.max(...numbers));
+const turmaA = ["Raimison", "Rafaela", "Daiana"];
+const turmaB = ["Araújo", "Campos", "Lima", ...turmaA];
+console.log(turmaB);
+export {};
