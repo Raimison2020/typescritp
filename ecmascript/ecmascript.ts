@@ -187,10 +187,33 @@ falarCom("Rafaela");
 // contagemRegressiva();
 // contagemRegressiva(5);
 
-// Rest & Spread
+// 51. Operador Spread & Rest #01
 const numbers = [1, 10, 99, -5];
 console.log(Math.max(...numbers));
 
 const turmaA: string[] = ["Raimison", "Rafaela", "Daiana"];
 const turmaB: string[] = ["Araújo", "Campos", "Lima", ...turmaA];
 console.log(turmaB);
+
+// 52. Operador Spread & Rest #02
+function somarTudo(...numeros: number[]): number {
+  // 'numeros' é um array real com todos os argumentos passados
+  return numeros.reduce((total, atual) => total + atual, 0);
+}
+console.log(somarTudo(1, 2, 3, 4));
+
+// Exemplo do curso
+function retornaArray(...args: number[]): number[] {
+  return args;
+}
+const numeros = retornaArray(1, 2, 3, 4, 5, 6, 345, 623);
+console.log(numeros);
+
+// 54. Operador Destructuring (Array)
+const caracteristicas = ["Motor Zetec 1.8", 2020];
+// const motor = caracteristicas[0];
+// const ano = caracteristicas[1];
+
+const [motor, ano] = caracteristicas;
+console.log(motor);
+console.log(ano);
